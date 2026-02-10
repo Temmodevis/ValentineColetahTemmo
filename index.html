@@ -9,117 +9,96 @@
 
 <body>
 
+<!-- FLOWERS -->
+<div id="flowers"></div>
+
 <!-- PAGE 1 -->
 <section class="page active">
+  <div class="card">
+    <h1>Will you be my Valentine? ❤️</h1>
 
-<div class="card">
-
-<h1>Will you be my Valentine? ❤️</h1>
-
-<div class="buttons">
-<button onclick="goToPage(1)">Yes 💖</button>
-<button onmouseover="runNo(this)">No 💔</button>
-</div>
-
-</div>
+    <div class="buttons">
+      <button onclick="goToPage(1)" class="yes">Yes 💖</button>
+      <button onmouseover="runNo(this)" class="no">No 💔</button>
+    </div>
+  </div>
 </section>
 
 <!-- PAGE 2 POEM -->
 <section class="page">
+  <div class="card">
+    <h2>For You 💕</h2>
 
-<div class="card poem-card">
+    <p class="poem">
+      From the moment you smiled at me,<br>
+      my world changed quietly.<br><br>
 
-<h2>For You 💕</h2>
+      Your laugh feels like home,<br>
+      your eyes calm my storms.<br><br>
 
-<p id="poemText">
+      Every memory with you shines brighter,<br>
+      every tomorrow feels lighter.<br><br>
 
-From the moment you smiled at me,<br>
-my world changed quietly.<br><br>
+      Will you be my Valentine,<br>
+      and forever my favorite part? ❤️
+    </p>
 
-Your laugh feels like home,<br>
-your eyes calm my storms.<br><br>
-
-Every memory with you shines brighter,<br>
-every tomorrow feels lighter.<br><br>
-
-So today I ask with all my heart —<br>
-will you be my Valentine,<br>
-and forever my favorite part? ❤️
-
-</p>
-
-<div class="navBtns">
-<button onclick="goBack()">⬅️ Back</button>
-<button onclick="nextPage()">Next ➡️</button>
-</div>
-
-</div>
-
+    <div class="nav">
+      <button onclick="goBack()">⬅ Back</button>
+      <button onclick="nextPage()">Next ➡</button>
+    </div>
+  </div>
 </section>
 
 <!-- PAGE 3 MEMORIES -->
 <section class="page">
+  <div class="card big">
+    <h2>Our Memories 💖</h2>
 
-<div class="memory-frame">
+    <div class="memory-grid">
 
-<div class="memory-grid">
+      <div class="frame">
+        <img src="images/image1.jpeg">
+      </div>
 
-<div class="frame">
-<img src="images/image1.jpeg">
-</div>
+      <div class="frame message">
+        Every smile of yours feels like home ❤️
+      </div>
 
-<div class="frame message">
-<p>Every smile of yours feels like home ❤️</p>
-</div>
+      <div class="frame message">
+        You are my peace and my happiness 💕
+      </div>
 
-<div class="frame message">
-<p>Thank you for loving me the way you do 💕</p>
-</div>
+      <div class="frame">
+        <img src="images/image2.jpeg">
+      </div>
 
-<div class="frame">
-<img src="images/image2.jpeg">
-</div>
+    </div>
 
-</div>
-
-<br>
-
-<div class="navBtns">
-<button onclick="goBack()">⬅️ Back</button>
-<button onclick="nextPage()">Next ➡️</button>
-</div>
-
-</div>
-
+    <div class="nav">
+      <button onclick="goBack()">⬅ Back</button>
+      <button onclick="nextPage()">Next ➡</button>
+    </div>
+  </div>
 </section>
 
 <!-- PAGE 4 VIDEO -->
 <section class="page">
+  <div class="card">
+    <h2>Our Song 🎶</h2>
 
-<div class="card">
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/kVRgPVYgrQE?si=5uuqn9YeNYr8SXLm" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> 
+      </iframe>
+    </div>
 
-<h2>Our Song 🎶</h2>
-
-<div class="video-container">
-
-<iframe
-src="https://www.youtube.com/embed/kVRgPVYgrQE"
-frameborder="0"
-allowfullscreen>
-</iframe>
-
-</div>
-
-<br>
-
-<button onclick="goBack()">⬅️ Back</button>
-
-</div>
-
+    <div class="nav">
+      <button onclick="goBack()">⬅ Back</button>
+    </div>
+  </div>
 </section>
 
 <script src="script.js"></script>
-
 </body>
 </html>
-
