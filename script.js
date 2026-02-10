@@ -1,55 +1,54 @@
-const pages=document.querySelectorAll(".page");
-const yesBtn=document.getElementById("yesBtn");
-const noBtn=document.getElementById("noBtn");
+const pages = document.querySelectorAll(".page");
+const noBtn = document.getElementById("noBtn");
 
-let current=0;
+let current = 0;
 
-function show(i){
-pages.forEach(p=>p.classList.remove("active"));
+// SHOW PAGE
+function showPage(i){
+if(i < 0 || i >= pages.length) return;
+pages.forEach(p => p.classList.remove("active"));
 pages[i].classList.add("active");
-current=i;
+current = i;
 burst();
 }
 
-// YES
-yesBtn.onclick=()=>show(1);
+// FOR HTML BUTTONS
+function nextPage(){
+showPage(current + 1);
+}
 
-// NO RUNS 😏
-noBtn.onmouseover=()=>{
-noBtn.style.transform=`translate(${Math.random()*300-150}px,${Math.random()*300-150}px)`;
+function goBack(){
+showPage(current - 1);
+}
+
+function goToPage(i){
+showPage(i);
+}
+
+// NO BUTTON RUNS 😏
+if(noBtn){
+noBtn.onmouseover = () => {
+noBtn.style.transform =
+`translate(${Math.random()*200-100}px,${Math.random()*200-100}px)`;
 };
-
-// NEXT BUTTONS
-document.addEventListener("click",e=>{
-if(e.target.classList.contains("nextBtn")){
-show(current+1);
 }
-
-if(e.target.classList.contains("backBtn")){
-show(current-1);
-}
-});
 
 // FLOWERS 🌸
 function dropFlower(){
-const f=document.createElement("div");
-f.className="flower";
-f.innerHTML=["🌸","🌹","💮","🌷"][Math.floor(Math.random()*4)];
-f.style.left=Math.random()*100+"vw";
-f.style.animationDuration=5+Math.random()*5+"s";
+const f = document.createElement("div");
+f.className = "flower";
+f.innerHTML = ["🌸","🌹","💮","🌷","❤️"][Math.floor(Math.random()*5)];
+f.style.left = Math.random()*100+"vw";
+f.style.animationDuration = 6 + Math.random()*5 + "s";
 document.body.appendChild(f);
-setTimeout(()=>f.remove(),10000);
+setTimeout(()=>f.remove(),12000);
 }
 
-setInterval(dropFlower,300);
+setInterval(dropFlower,350);
 
 function burst(){
-for(let i=0;i<12;i++) dropFlower();
+for(let i=0;i<15;i++) dropFlower();
 }
 
-// MEMORY MESSAGES
-document.getElementById("msg1").innerText=
-"Every moment with you feels like magic. Thank you for loving me the way you do.";
-
-document.getElementById("msg2").innerText=
-"You are my peace, my smile, and my favorite person. I cherish us always.";
+// START FIRST PAGE
+showPage(0);
