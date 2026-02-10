@@ -1,8 +1,6 @@
 const pages=document.querySelectorAll(".page");
 const yesBtn=document.getElementById("yesBtn");
 const noBtn=document.getElementById("noBtn");
-const nextBtns=document.querySelectorAll(".nextBtn");
-const backBtn=document.querySelector(".backBtn");
 
 let current=0;
 
@@ -13,19 +11,26 @@ current=i;
 burst();
 }
 
+// YES
 yesBtn.onclick=()=>show(1);
 
+// NO RUNS 😏
 noBtn.onmouseover=()=>{
 noBtn.style.transform=`translate(${Math.random()*300-150}px,${Math.random()*300-150}px)`;
 };
 
-nextBtns.forEach(b=>{
-b.onclick=()=>show(current+1);
+// NEXT BUTTONS
+document.addEventListener("click",e=>{
+if(e.target.classList.contains("nextBtn")){
+show(current+1);
+}
+
+if(e.target.classList.contains("backBtn")){
+show(current-1);
+}
 });
 
-backBtn.onclick=()=>show(2);
-
-// CONTINUOUS FLOWERS 🌸
+// FLOWERS 🌸
 function dropFlower(){
 const f=document.createElement("div");
 f.className="flower";
@@ -33,17 +38,13 @@ f.innerHTML=["🌸","🌹","💮","🌷"][Math.floor(Math.random()*4)];
 f.style.left=Math.random()*100+"vw";
 f.style.animationDuration=5+Math.random()*5+"s";
 document.body.appendChild(f);
-
 setTimeout(()=>f.remove(),10000);
 }
 
 setInterval(dropFlower,300);
 
-// FLOWER BURST ON CLICK
 function burst(){
-for(let i=0;i<15;i++){
-dropFlower();
-}
+for(let i=0;i<12;i++) dropFlower();
 }
 
 // MEMORY MESSAGES
