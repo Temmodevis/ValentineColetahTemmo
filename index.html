@@ -11,11 +11,13 @@
 
 <!-- PAGE 1 -->
 <section class="page active">
+
 <div class="card">
+
 <h1>Will you be my Valentine? ❤️</h1>
 
 <div class="buttons">
-<button id="yesBtn">Yes 💖</button>
+<button onclick="goToPage(1)">Yes 💖</button>
 <button id="noBtn">No 💔</button>
 </div>
 
@@ -47,10 +49,9 @@ and forever my favorite part? ❤️
 </p>
 
 <div class="navBtns">
-<button class="backBtn">⬅️ Back</button>
-<button class="nextBtn">Next ➡️</button>
+<button onclick="goBack()">⬅️ Back</button>
+<button onclick="nextPage()">Next ➡️</button>
 </div>
-
 
 </div>
 
@@ -68,11 +69,11 @@ and forever my favorite part? ❤️
 </div>
 
 <div class="frame message">
-<p id="msg1"></p>
+<p>Every smile of yours feels like home ❤️</p>
 </div>
 
 <div class="frame message">
-<p id="msg2"></p>
+<p>Thank you for loving me the way you do 💕</p>
 </div>
 
 <div class="frame">
@@ -82,9 +83,10 @@ and forever my favorite part? ❤️
 </div>
 
 <br>
+
 <div class="navBtns">
-<button class="backBtn">⬅️ Back</button>
-<button class="nextBtn">Next ➡️</button>
+<button onclick="goBack()">⬅️ Back</button>
+<button onclick="nextPage()">Next ➡️</button>
 </div>
 
 </div>
@@ -101,18 +103,16 @@ and forever my favorite part? ❤️
 <div class="video-container">
 
 <iframe
-src="https://www.youtube.com/embed/kVRgPVYgrQE?si=5uuqn9YeNYr8SXLm" 
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+src="https://www.youtube.com/embed/kVRgPVYgrQE"
+frameborder="0"
 allowfullscreen>
 </iframe>
-
-
 
 </div>
 
 <br>
 
-<button class="backBtn">⬅️ Back</button>
+<button onclick="goBack()">⬅️ Back</button>
 
 </div>
 
@@ -122,4 +122,3 @@ allowfullscreen>
 
 </body>
 </html>
-
