@@ -1,39 +1,36 @@
-const pages = document.querySelectorAll(".page");
-let current = 0;
+const pages=document.querySelectorAll(".page");
+let c=0;
 
-function showPage(i){
-  if(i < 0 || i >= pages.length) return;
-  pages.forEach(p => p.classList.remove("active"));
-  pages[i].classList.add("active");
-  current = i;
-  burst();
+function show(i){
+pages.forEach(p=>p.classList.remove("active"));
+pages[i].classList.add("active");
+c=i;
+burst();
 }
 
-function nextPage(){ showPage(current + 1); }
-function goBack(){ showPage(current - 1); }
-function goToPage(i){ showPage(i); }
+function next(){ if(c<pages.length-1) show(c+1); }
+function back(){ if(c>0) show(c-1); }
+function go(i){ show(i); }
 
-// NO BUTTON ESCAPE 😏
-function runNo(btn){
-  btn.style.transform =
-  `translate(${Math.random()*200-100}px,${Math.random()*200-100}px)`;
+function escape(b){
+b.style.transform=`translate(${Math.random()*150-75}px,${Math.random()*150-75}px)`;
 }
 
-// FLOWERS
-function dropFlower(){
-  const f = document.createElement("div");
-  f.className = "flower";
-  f.innerHTML = ["🌸","🌹","💮","🌷","❤️"][Math.floor(Math.random()*5)];
-  f.style.left = Math.random()*100 + "vw";
-  f.style.animationDuration = 6 + Math.random()*5 + "s";
-  document.body.appendChild(f);
-  setTimeout(()=>f.remove(),12000);
+// hearts
+function heart(){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+h.style.animationDuration=6+Math.random()*5+"s";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),10000);
 }
 
-setInterval(dropFlower,400);
+setInterval(heart,500);
 
 function burst(){
-  for(let i=0;i<12;i++) dropFlower();
+for(let i=0;i<8;i++) heart();
 }
 
-showPage(0);
+show(0);
