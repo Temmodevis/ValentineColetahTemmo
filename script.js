@@ -38,7 +38,6 @@ document.addEventListener('click', e => {
     }
 });
 
-
 // FLOWER DROP NON STOP 🌸
 function dropFlower(){
     const flower = document.createElement("div");
