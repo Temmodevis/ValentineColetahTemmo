@@ -1,0 +1,183 @@
+* {
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+background: linear-gradient(-45deg,#ff003c,#ff6b81,#fff,#ffb3c6);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
+overflow:hidden;
+}
+
+@keyframes bg {
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+.page {
+width:100vw;
+height:100vh;
+display:none;
+justify-content:center;
+align-items:center;
+position:absolute;
+}
+
+.page.active {
+display:flex;
+animation:slide .7s ease;
+}
+
+@keyframes slide {
+from{transform:translateX(100%);opacity:0}
+to{transform:translateX(0);opacity:1}
+}
+
+.memory-frame {
+background:rgba(255,255,255,.9);
+padding:15px;
+border-radius:25px;
+box-shadow:0 0 40px rgba(255,0,90,.4);
+text-align:center;
+width:85vw;
+max-width:600px;
+}
+
+
+
+h1,h2 {
+color:#ff004f;
+margin-bottom:20px;
+}
+
+.buttons {
+display:flex;
+gap:25px;
+justify-content:center;
+}
+
+button {
+padding:14px 35px;
+border:none;
+border-radius:40px;
+font-size:17px;
+cursor:pointer;
+background:linear-gradient(45deg,#ff004f,#ff7a9c);
+color:white;
+box-shadow:0 0 15px rgba(255,0,90,.6);
+transition:.3s;
+}
+
+button:hover {
+transform:scale(1.1);
+box-shadow:0 0 25px rgba(255,0,90,.9);
+}
+
+.poem-card p {
+color:#ff004f;
+line-height:1.6;
+}
+
+.memory-grid {
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+}
+
+
+.frame {
+border:6px solid #ff9bb3;
+border-radius:20px;
+padding:10px;
+background:white;
+}
+
+.frame img {
+width:100%;
+border-radius:15px;
+}
+
+.message {
+display:flex;
+align-items:center;
+justify-content:center;
+color:#ff004f;
+padding:15px;
+font-size:16px;
+}
+
+.video-container iframe {
+width:90vw;
+max-width:400px;
+height:220px;
+border-radius:20px;
+box-shadow:0 0 20px pink;
+}
+
+
+/* FLOWERS */
+
+.flower {
+position:fixed;
+top:-50px;
+font-size:22px;
+opacity:.4;
+animation:fall linear infinite;
+z-index:-1;
+}
+
+@keyframes fall {
+to {
+transform:translateY(110vh) rotate(360deg);
+}
+}
+
+
+/* MOBILE SUPPORT */
+
+@media (max-width:600px){
+
+.card,.memory-frame{
+padding:20px;
+width:95vw;
+}
+
+h1{
+font-size:22px;
+}
+
+h2{
+font-size:20px;
+}
+
+.poem-card p{
+font-size:14px;
+}
+
+button{
+font-size:14px;
+padding:10px 25px;
+}
+
+.memory-grid{
+gap:8px;
+}
+
+.frame img{
+height:110px;
+}
+
+.message{
+font-size:12px;
+}
+
+.video-container iframe{
+width:95vw;
+height:200px;
+}
+
+}
