@@ -102,6 +102,38 @@ h1, h2 {
 
 .video iframe
 
+/* FORCE MEMORY PAGE TO FIT SCREEN */
+.memory-card {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.memory-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  align-items: center;
+}
+
+.frame img {
+  max-height: 90px !important;
+  object-fit: cover;
+}
+
+.message {
+  font-size: 12px;
+}
+
+/* ultra small phones */
+@media(max-height:650px){
+  .frame img{
+    max-height:70px !important;
+  }
+}
+
 
 /* MOBILE SUPPORT */
 
@@ -147,6 +179,7 @@ height:200px;
 }
 
 }
+
 
 
 
