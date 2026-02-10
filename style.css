@@ -2,61 +2,73 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Segoe UI;
+font-family:Poppins;
 }
 
 body{
-background:linear-gradient(#ff4d6d,#fff);
+background:radial-gradient(circle at top,#b1002d,#200010);
 overflow:hidden;
+color:white;
 }
 
-.page{
-display:none;
+.slide{
+position:absolute;
+width:100%;
 height:100vh;
+display:flex;
 align-items:center;
 justify-content:center;
+opacity:0;
+pointer-events:none;
+transition:1s;
 }
 
-.page.active{display:flex;}
+.slide.active{
+opacity:1;
+pointer-events:auto;
+}
 
 .card{
-background:white;
 width:90%;
 max-width:420px;
-height:90vh;
-padding:20px;
-border-radius:25px;
-text-align:center;
-box-shadow:0 10px 30px rgba(0,0,0,.2);
+height:85vh;
+background:rgba(255,255,255,.1);
+backdrop-filter:blur(15px);
+border-radius:30px;
+padding:25px;
 display:flex;
 flex-direction:column;
 justify-content:space-between;
+text-align:center;
+box-shadow:0 20px 40px rgba(0,0,0,.5);
 }
 
-h1,h2{color:#ff4d6d;}
+h1,h2{
+font-family:Playfair Display;
+}
 
-.btns button,.nav button{
-padding:10px 20px;
+.actions button,.nav button{
 border:none;
-border-radius:30px;
+padding:12px 25px;
+border-radius:40px;
 font-size:15px;
 cursor:pointer;
 }
 
-.yes{background:#ff4d6d;color:white;}
-.no{background:#ccc;}
+.yes{background:#ff2e63;color:white;}
+.no{background:#aaa;}
 
 .poem{
 font-size:14px;
-line-height:1.5;
-color:#444;
+line-height:1.6;
+opacity:.9;
+}
+
+.memories{
+padding:20px;
 }
 
 .memory{
-padding:15px;
-}
-
-.grid{
 flex:1;
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -64,40 +76,37 @@ gap:10px;
 align-items:center;
 }
 
-.box{
-border:3px solid #ff4d6d;
-border-radius:12px;
-padding:5px;
-display:flex;
-align-items:center;
-justify-content:center;
+.frame{
+border:2px solid #ff2e63;
+border-radius:15px;
+overflow:hidden;
 }
 
-.box img{
+.frame img{
 width:100%;
-max-height:100px;
+height:110px;
 object-fit:cover;
-border-radius:8px;
 }
 
-.msg{
-color:#ff4d6d;
+.note{
 font-size:12px;
-font-weight:600;
+color:#ff9fb6;
 }
 
 .video iframe{
 width:100%;
-height:200px;
-border:none;
+height:220px;
 border-radius:15px;
+border:none;
 }
 
-/* hearts */
+.nav{
+margin-top:10px;
+}
+
 .heart{
 position:fixed;
 top:-10px;
-font-size:18px;
 animation:fall linear forwards;
 pointer-events:none;
 }
@@ -107,6 +116,6 @@ to{transform:translateY(110vh);opacity:0;}
 }
 
 @media(max-width:480px){
-.grid{grid-template-columns:1fr;}
-.box img{max-height:90px;}
+.memory{grid-template-columns:1fr;}
+.frame img{height:90px;}
 }
