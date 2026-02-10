@@ -77,6 +77,14 @@ transform:scale(1.1);
 box-shadow:0 0 25px rgba(255,0,90,.9);
 }
 
+.navBtns{
+display:flex;
+justify-content:space-between;
+margin-top:15px;
+gap:10px;
+}
+
+
 .poem-card p {
 color:#ff004f;
 line-height:1.6;
@@ -181,3 +189,4 @@ height:200px;
 }
 
 }
+
