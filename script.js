@@ -1,37 +1,55 @@
-const slides=document.querySelectorAll(".slide");
-let i=0;
+const pages = document.querySelectorAll('.page');
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const nextBtns = document.querySelectorAll('.nextBtn');
+const backBtn = document.querySelector('.backBtn');
 
-function show(n){
-slides.forEach(s=>s.classList.remove("active"));
-slides[n].classList.add("active");
-i=n;
-burst();
+let currentPage = 0;
+
+function showPage(index) {
+    pages.forEach(page => page.classList.remove('active'));
+    pages[index].classList.add('active');
+    currentPage = index;
 }
 
-function next(){ if(i<slides.length-1) show(i+1); }
-function back(){ if(i>0) show(i-1); }
-function go(n){ show(n); }
+// YES BUTTON
+yesBtn.addEventListener('click', () => {
+    showPage(1);
+});
 
-function escape(b){
-b.style.transform=`translate(${Math.random()*120-60}px,${Math.random()*120-60}px)`;
+// NO BUTTON RUNS AWAY 😏
+noBtn.addEventListener('mouseover', () => {
+    const x = Math.random() * 300 - 150;
+    const y = Math.random() * 300 - 150;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+// NEXT BUTTONS
+nextBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        showPage(currentPage + 1);
+    });
+});
+
+// BACK BUTTON
+document.addEventListener('click', e => {
+    if(e.target.classList.contains('backBtn')){
+        showPage(currentPage - 1);
+    }
+});
+
+
+// FLOWER DROP NON STOP 🌸
+function dropFlower(){
+    const flower = document.createElement("div");
+    flower.className = "flower";
+    flower.innerHTML = ["🌸","🌹","💮","🌷","❤️"][Math.floor(Math.random()*5)];
+    flower.style.left = Math.random()*100 + "vw";
+    flower.style.animationDuration = 6 + Math.random()*5 + "s";
+    document.body.appendChild(flower);
+
+    setTimeout(()=>flower.remove(),12000);
 }
 
-// hearts
-function heart(){
-let h=document.createElement("div");
-h.className="heart";
-h.innerHTML="❤️";
-h.style.left=Math.random()*100+"vw";
-h.style.fontSize=12+Math.random()*15+"px";
-h.style.animationDuration=6+Math.random()*4+"s";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),10000);
-}
+setInterval(dropFlower,300);
 
-setInterval(heart,500);
-
-function burst(){
-for(let x=0;x<6;x++) heart();
-}
-
-show(0);
