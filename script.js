@@ -1,61 +1,48 @@
-const pages = document.querySelectorAll('.page');
-const yesBtn = document.getElementById('yesBtn');
-const noBtn = document.getElementById('noBtn');
-const nextBtns = document.querySelectorAll('.nextBtn');
-const backBtns = document.querySelectorAll('.backBtn');
-const choices = document.querySelectorAll('.choice');
-
-let currentPage = 0;
-
-function showPage(index){
-  pages.forEach(p=>p.classList.remove('active'));
-  pages[index].classList.add('active');
-  currentPage = index;
+body{
+  background: linear-gradient(-45deg,#ff003c,#ff6b81,#fff,#ffb3c6);
+  background-size:400% 400%;
+  animation:bg 12s ease infinite;
+  overflow:hidden;
 }
 
-// YES
-yesBtn.addEventListener('click',()=>showPage(1));
-
-// RUNAWAY NO 😏
-noBtn.addEventListener('mouseover',()=>{
-  const x = Math.random()*300-150;
-  const y = Math.random()*300-150;
-  noBtn.style.transform=`translate(${x}px,${y}px)`;
-});
-
-// NEXT
-nextBtns.forEach(btn=>{
-  btn.addEventListener('click',()=>showPage(currentPage+1));
-});
-
-// BACK
-backBtns.forEach(btn=>{
-  btn.addEventListener('click',()=>showPage(currentPage-1));
-});
-
-// CHOICES
-choices.forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const type = btn.dataset.type;
-
-    if(type==="chocolate" || type==="yogurt"){
-      window.location.href="https://wa.me/254790214552?text=Hey%20love%20❤️%20I%20choose%20"+type+"%20for%20Valentine%20🥺";
-    }
-
-    if(type==="me"){
-      alert("Aww 🥺❤️\nIf you really want me there next week, I promise I will make that moment the most beautiful memory of our love 💖🌹");
-    }
-  });
-});
-
-// FLOWERS 🌸
-function dropFlower(){
-  const flower=document.createElement("div");
-  flower.className="flower";
-  flower.innerHTML=["🌸","🌹","💮","🌷","❤️"][Math.floor(Math.random()*5)];
-  flower.style.left=Math.random()*100+"vw";
-  flower.style.animationDuration=6+Math.random()*5+"s";
-  document.body.appendChild(flower);
-  setTimeout(()=>flower.remove(),12000);
+@keyframes bg{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
-setInterval(dropFlower,300);
+
+.page{
+  width:100vw;
+  height:100vh;
+  display:none;
+  position:absolute;
+}
+
+.page.active{
+  display:flex;
+  animation:fade .7s ease;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(30px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.romantic-card{
+  max-width:650px;
+  border-radius:25px;
+  background:rgba(255,255,255,.96);
+}
+
+.flower{
+  position:fixed;
+  top:-50px;
+  font-size:22px;
+  opacity:.4;
+  animation:fall linear infinite;
+  z-index:-1;
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg);}
+}
