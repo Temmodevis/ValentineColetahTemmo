@@ -1,43 +1,61 @@
-const pages=document.querySelectorAll('.page');
-let current=0;
+const pages = document.querySelectorAll('.page');
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const nextBtns = document.querySelectorAll('.nextBtn');
+const backBtns = document.querySelectorAll('.backBtn');
+const choices = document.querySelectorAll('.choice');
 
-function show(i){
-pages.forEach(p=>p.classList.remove('active'));
-pages[i].classList.add('active');
-current=i;
+let currentPage = 0;
+
+function showPage(index){
+  pages.forEach(p=>p.classList.remove('active'));
+  pages[index].classList.add('active');
+  currentPage = index;
 }
 
-document.getElementById('yesBtn').onclick=()=>show(1);
+// YES
+yesBtn.addEventListener('click',()=>showPage(1));
 
-document.getElementById('noBtn').onmouseover=()=>{
-noBtn.style.transform=`translate(${Math.random()*80-40}px,${Math.random()*80-40}px)`
-};
-
-document.addEventListener('click',e=>{
-if(e.target.classList.contains('nextBtn')) show(current+1);
-if(e.target.classList.contains('backBtn')) show(current-1);
+// RUNAWAY NO 😏
+noBtn.addEventListener('mouseover',()=>{
+  const x = Math.random()*300-150;
+  const y = Math.random()*300-150;
+  noBtn.style.transform=`translate(${x}px,${y}px)`;
 });
 
-/* FLOWERS */
+// NEXT
+nextBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>showPage(currentPage+1));
+});
 
-function flower(){
-const f=document.createElement("div");
-f.innerText=["🌸","🌹","💮","🌷"][Math.floor(Math.random()*4)];
-f.style.position="fixed";
-f.style.left=Math.random()*100+"vw";
-f.style.top="-20px";
-f.style.fontSize="20px";
-f.style.opacity=".5";
-document.body.appendChild(f);
+// BACK
+backBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>showPage(currentPage-1));
+});
 
-let fall=setInterval(()=>{
-f.style.top=(f.offsetTop+2)+"px";
-},20);
+// CHOICES
+choices.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const type = btn.dataset.type;
 
-setTimeout(()=>{
-clearInterval(fall);
-f.remove();
-},8000);
+    if(type==="chocolate" || type==="yogurt"){
+      window.location.href="https://wa.me/254790214552?text=Hey%20love%20❤️%20I%20choose%20"+type+"%20for%20Valentine%20🥺";
+    }
+
+    if(type==="me"){
+      alert("Aww 🥺❤️\nIf you really want me there next week, I promise I will make that moment the most beautiful memory of our love 💖🌹");
+    }
+  });
+});
+
+// FLOWERS 🌸
+function dropFlower(){
+  const flower=document.createElement("div");
+  flower.className="flower";
+  flower.innerHTML=["🌸","🌹","💮","🌷","❤️"][Math.floor(Math.random()*5)];
+  flower.style.left=Math.random()*100+"vw";
+  flower.style.animationDuration=6+Math.random()*5+"s";
+  document.body.appendChild(flower);
+  setTimeout(()=>flower.remove(),12000);
 }
-
-setInterval(flower,400);
+setInterval(dropFlower,300);
